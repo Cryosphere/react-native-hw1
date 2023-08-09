@@ -1,54 +1,48 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, ImageBackground } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { useFonts } from "expo-font";
+
 import RegistrationScreen from "./screens/RegistrationScreen/RegistrationScreen";
-import bgImage from "./assets/PhotoBG.png";
+import LoginScreen from "./screens/LoginScreen/LoginScreen";
+import PostsScreen from "./screens/PostsScreen/PostsScreen";
 
-export default function App() {
+const App = () => {
   const [fontsLoaded] = useFonts({
-    Roboto: require("./assets/fonts/Roboto-Regular.otf"),
+    "Inter-Medium": require("./assets/fonts/Inter/static/Inter-Medium.ttf"),
+    "Roboto-Medium": require("./assets/fonts/Roboto/Roboto-Medium.ttf"),
+    "Roboto-Regular": require("./assets/fonts/Roboto/Roboto-Regular.ttf"),
+    "Roboto-Bold": require("./assets/fonts/Roboto/Roboto-Bold.ttf"),
   });
-  return (
-    <View
-      style={{
-        position: "absolute",
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
-        // width: "100%",
-        height: 549,
-        left: 0,
-        top: 263,
 
-        // background: "#FFFFFF",
-        borderRadius: 25,
-      }}
-    >
-      <ImageBackground
-        source={bgImage}
+  if (!fontsLoaded) {
+    return null;
+  }
+
+  return (
+    <View style={styles.container}>
+      <Image
+        source={require("./assets/images/app_background.jpg")}
         resizeMode="cover"
         style={styles.image}
-      ></ImageBackground>
+      />
       <RegistrationScreen />
-      <StatusBar style="auto" />
+      {/* <LoginScreen /> */}
+      {/* <PostsScreen /> */}
     </View>
   );
-}
+};
+
 const styles = StyleSheet.create({
   container: {
+    position: "relative",
     flex: 1,
+    backgroundColor: "#fff",
   },
   image: {
+    position: "absolute",
+    width: "100%",
     flex: 1,
     justifyContent: "center",
   },
-  text: {
-    color: "white",
-    fontSize: 42,
-    lineHeight: 84,
-    fontWeight: "bold",
-    textAlign: "center",
-    backgroundColor: "#000000c0",
-  },
 });
+
+export default App;
