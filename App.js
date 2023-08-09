@@ -25,7 +25,7 @@ const App = () => {
         style={styles.image}
       />
       <RegistrationScreen />
-      {/* <LoginScreen /> */}
+      <LoginScreen />
       {/* <PostsScreen /> */}
     </View>
   );
